@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+
+<body>
+	<header>
+		<h1>
+			{{ title }}
+		</h1>
+	</header>
+
+	<section class = "input">
+		
+		<p> {{ para }}</p>
+		<form action = "/templates" id="sumform" method = "POST">
+			<p>Enter the text you wish to summarize:</p>
+			<textarea maxlength = "5000" size = "5000" name = "input_text" id = 
+			"input_text" style="width:600px;height:250px" value = "{{request.form['input_text']}}" ></textarea>
+			<p>Enter the summarized number of sentences you like to be outputted: </p>
+			<p>
+				<input type="number" maxlength="600" name = "num_sentences" pattern = 
+				"[0-9]+" min = "1" max = "100" required placeholder="Number of sentences needed" >
+			</p>
+
+			<input type="submit" value="Submit">
+
+			<h3>Summazrized Text: </h3>
+			<p>
+				{% for sentence in output_summary%}
+				{{ sentence }}
+				{%endfor%}
+			</p>
+
+		</form>
+
+		
+	</section>
+
+	<footer>
+
+	</footer>
+
+</body>
+
+
+</html>
