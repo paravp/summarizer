@@ -90,7 +90,7 @@ class summarize:
 app = Flask(__name__)
 @app.route('/templates', methods=['POST'])
 def original_text_form():
-	title = "Text Summarizer"
+	title = "Summarizer"
 	text = request.form['input_text'] #Get text from html
 	max_value = sent_tokenize(text)
 	num_sent = int(request.form['num_sentences']) #Get number of sentence required in summary
