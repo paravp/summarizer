@@ -1,43 +1,107 @@
 <!DOCTYPE html>
 <head>
+	<title>
+		Text Summarizer
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link href="css/font-awesome.min.css" rel="stylesheet">
 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 	<header>
-		<h1>
-			{{ title }}
-		</h1>
-	</header>
-
-	<section class = "input">
 		
-		<p> {{ para }}</p>
-		<form action = "/templates" id="sumform" method = "POST">
-			<p>Enter the text you wish to summarize:</p>
-			<textarea maxlength = "5000" size = "5000" name = "input_text" id = 
-			"input_text" style="width:600px;height:250px" value = "{{request.form['input_text']}}" ></textarea>
-			<p>Enter the summarized number of sentences you like to be outputted: </p>
-			<p>
-				<input type="number" maxlength="600" name = "num_sentences" pattern = 
-				"[0-9]+" min = "1" max = "100" required placeholder="Number of sentences needed" >
-			</p>
+	</header>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>                        
+			</button>
+			<a class="navbar-brand" href="#">Summarizer</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#">Page 1</a></li>
+				<li><a href="#">Page 2</a></li>
+				<li><a href="#">Page 3</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+			</div>
+		</div>
+	</nav>
 
-			<input type="submit" value="Submit">
+	<section class = "input container">
+		<div class="intro jumbotron">
+			<h2>Simple Text Summarizer</h2>
+			<p>In this text summarizer, you can summarize any text from an article, journal, story,
+				tutorial and more by simply coppying and pasting that text below. The algorithm for 
+				the summarazier will display the output summary based on the main 
+				keywords from the text.
+			</p>			
+		</div>
+		<div class="form-container jumbotron">
+			<form action = "/templates" id="sumform" method = "POST">
+				<p>Enter the text you wish to summarize:</p>
+				<textarea maxlength = "50000" name = "input_text" id = "input_text" style="width:600px; 
+				height:250px" value = "{{request.form['input_text']}}" ></textarea>
+				<p>Enter the summarized number of sentences you like to be outputted: </p>
+				<p>
+					<input type="number" name = "num_sentences" pattern = 
+					"[0-9]+" min = "1" max = "100" required >
+				</p>
+				<p>
+					<input type="submit" class="btn btn-success btn-md" value="Submit">
+				</p>
+				<h3>Summazrized Text: </h3>
+				<textarea name="output_text" id="output_text" maxlength="50000" style="width:600px; 
+				height:250px">
+					{% for sentence in output_summary%}
+					{{ sentence }}
+					{%endfor%}
+				</textarea>
 
-			<h3>Summazrized Text: </h3>
-			<p>
-				{% for sentence in output_summary%}
-				{{ sentence }}
-				{%endfor%}
-			</p>
-
-		</form>
-
+			</form>
+		</div>
 		
 	</section>
 
-	<footer>
+	<footer class="footer">
+		<div class="container">
+			<div class="footer-col2">
+				<ul class="weblinks-inline">
+					<li>
+						<a href="https://plus.google.com/" class="social transition" targer="_blank">
+							<i class="fa fa-google-plus-square" aria-hidden="true">Google Plus</i>
+						</a> 
+					</li>
+					<li> 
+						<a href="https://www.github.com/paravp/" class="social transition" targer="_blank">
+							<i class="fa fa-github" aria-hidden="true">Github</i>
+						</a> 
+					</li>
+					<li> 
+						<a href="https://www.linkedin.com/in/parav-patel-2722008a/" class="social transition" targer="_blank">
+							<i class="fa fa-linkedin" aria-hidden="true">Linkedin</i>
+						</a> 
+					</li>
+				</ul>
+			</div>
+		</div>
 
 	</footer>
 

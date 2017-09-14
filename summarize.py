@@ -1,8 +1,6 @@
 #Author: Parav Patel
 # This program utilizes basic NLP libraries to create a basic summerizer which outputs a summary for a given text
 # (article, story, blog posts etc..).
-#	
-#
 
 from __future__ import print_function
 import array
