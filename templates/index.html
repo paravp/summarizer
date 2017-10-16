@@ -6,55 +6,128 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<link href="css/font-awesome.min.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/style.css" />
+
 </head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	html, header, body{
+		height: 100%;
+		width: 100%;
+	}
+	footer{
+		display: block;
+	}
+	div{
+	display: block;
+	}
+	nav ul li a{
+		text-decoration: none;
+	}
+	h1, h2, h3, h4, h5, h6{
+		font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-weight: 700;
+	}
+	p{
+		font-size: 50px;
+	}
+	ul{
+		display: block;
+	}
+	.container{
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.footer{
+		padding: 12px 0 12px 0;
+		}
+		.gray-bg{
+			background-color: #f6f6f6;
+		}
+		.text-center{
+			text-align: center !important;
+		}
+		.footer .social li a{
+			border: 1px solid #222;
+			display: block;
+			font-size: 14px;
+			height: 30px;
+			line-height: 28px;
+			text-align: center;
+			width: 30px;
+			transform: rotate(45deg);
+		}
+		.transition{
+			color: gray;
+			background: 0 0 ;
+			transition: all .3s ease-in-out;
+		}
+		.footer .weblinks-inline{
+			list-style: none;
+			padding-left: 0;
+		}
+		.marg_bot{
+			margin-bottom: 30px !important;
+		}
+		.weblinks-inline li{
+			display: inline;
+			font-size: 200%;
+			margin: 1%;
+			padding: 1% 1% 1% 1%;
+			border-radius: 8px;
+		}
+		.copyright{
+			font-size: 15px;
+		}
+</style>
 
 <body>
-	<header>
-		
-	</header>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>                        
-			</button>
-			<a class="navbar-brand" href="#">Summarizer</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<a class="navbar-brand" href="#input">Summarizer</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Page 1</a></li>
-				<li><a href="#">Page 2</a></li>
-				<li><a href="#">Page 3</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			</ul>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				</ul>
 			</div>
 		</div>
 	</nav>
 
-	<section class = "input container">
+	<section class = "input container" id = "input">
 		<div class="intro jumbotron">
-			<h2>Simple Text Summarizer</h2>
-			<p>In this text summarizer, you can summarize any text from an article, journal, story,
-				tutorial and more by simply coppying and pasting that text below. The algorithm for 
-				the summarazier will display the output summary based on the main 
-				keywords from the text.
+			<h2>Text Summarizer</h2>
+			<p> You can summarize any text from an article, journal, story
+				and more by simply copying and pasting that text below. The algorithm for 
+				the summarazier will display the output summary based on keywords extracted from the text.
 			</p>			
 		</div>
-		<div class="form-container jumbotron">
+		<div class="form-container jumbotron" id-"sum-section">
 			<form action = "/templates" id="sumform" method = "POST">
 				<p>Enter the text you wish to summarize:</p>
 				<textarea maxlength = "50000" name = "input_text" id = "input_text" style="width:600px; 
@@ -65,47 +138,52 @@
 					"[0-9]+" min = "1" max = "100" required >
 				</p>
 				<p>
-					<input type="submit" class="btn btn-success btn-md" value="Submit">
+					<input type="submit"  class="btn btn-success btn-md" value="Submit">
 				</p>
-				<h3>Summazrized Text: </h3>
-				<textarea name="output_text" id="output_text" maxlength="50000" style="width:600px; 
+				<h4>Summazrized Text: </h4>
+				<textbox name="output_text" id="output_text" maxlength="50000" style="width:600px; 
 				height:250px">
-					{% for sentence in output_summary%}
-					{{ sentence }}
-					{%endfor%}
-				</textarea>
-
+					{% for sentence in output_summary %}
+					<p>{{ sentence }} </p>
+					{% endfor %}
+				</textbox>
+				<br>
+				<h4>Original Text:</h4>
+				<p>{{ original_text }}</p>
 			</form>
 		</div>
 		
 	</section>
 
-	<footer class="footer">
-		<div class="container">
+	<footer class="footer gray-bg">
+		<div class="container text-center">
 			<div class="footer-col2">
-				<ul class="weblinks-inline">
+				<ul class="weblinks-inline marg_bot">
 					<li>
-						<a href="https://plus.google.com/" class="social transition" targer="_blank">
-							<i class="fa fa-google-plus-square" aria-hidden="true">Google Plus</i>
+						<a href="https://plus.google.com/" class="social transition" targer = "_blank">
+							<i class="fa fa-google-plus-square" aria-hidden="true"></i>
 						</a> 
 					</li>
 					<li> 
-						<a href="https://www.github.com/paravp/" class="social transition" targer="_blank">
-							<i class="fa fa-github" aria-hidden="true">Github</i>
+						<a href="https://www.github.com/paravp/" class="social transition" targer = "_blank">
+							<i class="fa fa-github" aria-hidden="true"></i>
 						</a> 
 					</li>
 					<li> 
-						<a href="https://www.linkedin.com/in/parav-patel-2722008a/" class="social transition" targer="_blank">
-							<i class="fa fa-linkedin" aria-hidden="true">Linkedin</i>
+						<a href="https://www.linkedin.com/in/parav-patel-2722008a/" class="social transition" targer = "_blank">
+							<i class="fa fa-linkedin" aria-hidden="true"></i>
 						</a> 
 					</li>
 				</ul>
 			</div>
+			<p class="copyright">
+				<a href="">© Summarizer 2017</a> <br>
+				All Rights Reserved, Developed by 
+				<a targer = "_blank" href="http://github.com/paravp/">paravp</a>
+			</p>
 		</div>
 
 	</footer>
-
 </body>
-
 
 </html>
